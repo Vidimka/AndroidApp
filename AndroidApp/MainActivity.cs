@@ -18,11 +18,12 @@ namespace AndroidApp
                 ViewGroup.LayoutParams.MatchParent,
                 ViewGroup.LayoutParams.MatchParent);
             layout.SetPadding(30, 30, 30, 30);
-            layout.SetBackgroundColor(Color.DimGray);
+            layout.SetBackgroundColor(Color.White);
+            layout.SetClipToPadding(false);
 
-            var basicCard = new BasicCard(this);
-            basicCard.AddText("A Basic Form");
+            var basicCard = new BasicCard(this, Resource.Drawable.atom);
             basicCard.AddTitle("A Basic Title");
+            basicCard.AddText("A Basic Text");
             basicCard.SetPadding((int) DPConverter.DPToPixels(16), (int)DPConverter.DPToPixels(16), (int) DPConverter.DPToPixels(16), (int) DPConverter.DPToPixels(16));
 
             layout.AddView(basicCard);
