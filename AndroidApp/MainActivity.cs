@@ -31,15 +31,24 @@ namespace AndroidApp
             basicCard.SetPadding(DpToPx(20), DpToPx(16), DpToPx(20), DpToPx(20));
 
             var buttonCard = new ButtonCard(this, Resource.Drawable.atom);
-            buttonCard.AddTitle("A Basic Title");
-            buttonCard.AddText("A Basic Text");
+            buttonCard.AddTitle("Header");
+            buttonCard.AddText("Subheader");
             buttonCard.SetPadding(DpToPx(20), DpToPx(10), DpToPx(20), DpToPx(10));
+
+            var itemCard = new ItemCard(this, Resource.Drawable.atom, Resource.Drawable.cross, true);
+            itemCard.SetPadding(DpToPx(20), DpToPx(10), DpToPx(20), DpToPx(10));
+
+            var listCard = new ListCard(this, Resource.Drawable.atom);
+            listCard.AddTitle("Header");
+            listCard.SetPadding(DpToPx(20), DpToPx(10), DpToPx(20), DpToPx(10));
 
             var button = new CustomButton(this);
 
             layout.AddView(subtextCard);
             layout.AddView(basicCard);
             layout.AddView(buttonCard);
+            layout.AddView(itemCard);
+            layout.AddView(listCard);
             layout.AddView(button);
             SetContentView(layout);
         }

@@ -28,7 +28,7 @@ namespace AndroidLib
             image = new ImageView(Context);
             image.SetImageResource(imageId);
 
-            Elevation = DpToPx(50);
+            Elevation = DpToPx(10);
             backgroundShape.SetTint(Color.White);
             Background = backgroundShape;
             var lp = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent);

@@ -24,7 +24,7 @@ namespace AndroidLib
             textField.SetTextColor(Color.DimGray);
             textField.SetTextSize(ComplexUnitType.Dip, 14);
             var textLp = new LayoutParams(LayoutParams.WrapContent, DpToPx(18));
-            textLp.SetMargins(0, DpToPx(10), 0, DpToPx(10));
+            textLp.SetMargins(0, DpToPx(10), 0, DpToPx(2));
             textLp.AddRule(LayoutRules.Below, titleField.Id);
             textField.LayoutParameters = textLp;
 
