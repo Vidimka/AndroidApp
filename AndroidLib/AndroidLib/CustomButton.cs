@@ -4,17 +4,13 @@ using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Graphics.Drawables.Shapes;
 using Android.Util;
-
+using Android.Views;
 using static AndroidLib.Util;
 
 namespace AndroidLib
 {
     public class CustomButton : Button
     {
-        static int radiusValue = DpToPx(12);
-        static float[] outerRadii = {radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue};
-        static RoundRectShape roundRect = new RoundRectShape(outerRadii, null, null);
-        ShapeDrawable background = new ShapeDrawable(roundRect);
         public CustomButton(Context? context) : base(context)
         {
             Initialize();
@@ -22,16 +18,31 @@ namespace AndroidLib
 
         void Initialize()
         {
-            Invalidate();
-            //buttonBackground.SetTint(Color.ParseColor("#F6F7F8"));
-            background.SetTint(Color.LightGray);
+            int radiusValue = DpToPx(12);
+            float[] outerRadii = { radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue };
+            RoundRectShape roundRect = new RoundRectShape(outerRadii, null, null);
+            ShapeDrawable background = new ShapeDrawable(roundRect);
+            background.SetTint(Color.ParseColor("#F6F7F8"));
             Text = "Button";
             SetTextColor(Color.ParseColor("#428BF9"));
             SetTextSize(ComplexUnitType.Dip, 14);
             Background = background;
-            StateListAnimator = SetScaleAnimation();
+            StateListAnimator = null;
+            Touch += (sender, e) => {
+                if (e.Event.Action == MotionEventActions.Down)
+                {
+                    background.SetTint(Color.LightGray);
+                    Background = background;
+                }
+                else if (e.Event.Action == MotionEventActions.Up)
+                {
+                    background.SetTint(Color.ParseColor("#F6F7F8"));
+                    Background = background;
+                }
+            };
         }
 
+        /* Not used for now
         StateListAnimator SetScaleAnimation()
         {
             var stateListAnimator = new StateListAnimator();
@@ -47,5 +58,6 @@ namespace AndroidLib
             stateListAnimator.AddState(new int[] { }, normalSet);
             return stateListAnimator;
         }
+        */
     }
 }

@@ -3,7 +3,6 @@ using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Graphics.Drawables.Shapes;
 using Android.Util;
-using Android.Views;
 
 using static AndroidLib.Util;
 
@@ -17,7 +16,7 @@ namespace AndroidLib
         protected static int radiusValue = DpToPx(24);
         protected static float[] outerRadii = {radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue};
         protected static RoundRectShape roundRect = new RoundRectShape(outerRadii, null, null);
-        protected ShapeDrawable backgroundShape = new ShapeDrawable(roundRect);
+        protected static ShapeDrawable backgroundShape = new ShapeDrawable(roundRect);
         public BasicCard(Context? context, int imageId) : base(context)
         {
             Initialize(imageId);

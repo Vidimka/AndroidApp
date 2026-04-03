@@ -1,7 +1,5 @@
 ﻿using Android.Content;
 using Android.Graphics;
-using Android.Graphics.Drawables;
-using Android.Graphics.Drawables.Shapes;
 using Android.Util;
 using Android.Views;
 
@@ -11,20 +9,18 @@ namespace AndroidLib
 {
     public class SubtextCard : BasicCard
     {
-        TextView textField;
+        protected TextView textField;
         public SubtextCard(Context? context, int imageId) : base(context, imageId)
         {
-            base.Initialize(imageId); //Is this even a way?
-            //Initialize();
+            //base.Initialize(imageId); //How does it work??
+            Initialize();
         }
 
-        void Initialize()
+        protected void Initialize()
         {
-            titleField = new TextView(Context);
             titleField.Id = View.GenerateViewId();
-            textField = new TextView(Context);
-            textField.Id = View.GenerateViewId();
 
+            textField = new TextView(Context);
             textField.SetTextColor(Color.DimGray);
             textField.SetTextSize(ComplexUnitType.Dip, 14);
             var textLp = new LayoutParams(LayoutParams.WrapContent, DpToPx(18));
