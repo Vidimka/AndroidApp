@@ -4,15 +4,14 @@ namespace AndroidLib
 {
     public class ButtonListCard : ListCard
     {
-        public ButtonListCard(Context? context, int imageId, ItemCard itemCard) : base(context, imageId, itemCard)
+        public ButtonListCard(Context? context, int imageId, List<CardData> cardDataList) : base(context, imageId, cardDataList)
         {
-            base.Initialize(imageId);
+            base.Initialize(imageId, cardDataList);
             Initialize();
         }
 
         void Initialize() 
         {
-            RemoveView(image);
             var button = new CustomButton(Context);
             var buttonLp = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
             buttonLp.AddRule(LayoutRules.AlignParentBottom);

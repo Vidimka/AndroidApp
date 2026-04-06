@@ -2,7 +2,6 @@
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Graphics.Drawables.Shapes;
 using Android.Util;
 using Android.Views;
 using static AndroidLib.Util;
@@ -18,10 +17,7 @@ namespace AndroidLib
 
         void Initialize()
         {
-            int radiusValue = DpToPx(12);
-            float[] outerRadii = { radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue };
-            RoundRectShape roundRect = new RoundRectShape(outerRadii, null, null);
-            ShapeDrawable background = new ShapeDrawable(roundRect);
+            ShapeDrawable background = GetRoundRect(12);
             background.SetTint(Color.ParseColor("#F6F7F8"));
             Text = "Button";
             SetTextColor(Color.ParseColor("#428BF9"));

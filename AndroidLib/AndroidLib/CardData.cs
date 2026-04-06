@@ -4,9 +4,9 @@ namespace AndroidLib
 {
     public class CardData
     {
-        string title { get; set; }
-        string description { get; set; }
-        int imageId { get; set; }
+        public string title { get; private set; }
+        public string description { get; private set; }
+        public int imageId { get; private set; }
 
         public CardData(string title, string description, int imageId) 
         {

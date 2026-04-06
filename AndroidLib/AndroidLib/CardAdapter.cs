@@ -1,4 +1,4 @@
-﻿/*using Android.Views;
+﻿using Android.Views;
 using AndroidX.RecyclerView.Widget;
 
 namespace AndroidLib
@@ -8,24 +8,26 @@ namespace AndroidLib
         List<CardData> cardDataList = new List<CardData>();
         public override int ItemCount => cardDataList.Count;
 
+        public CardAdapter(List<CardData> cardDataList) => this.cardDataList = cardDataList;
+
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            var view = new ItemCard(parent.Context, atomId);
+            var card = new ItemCard(parent.Context);
+            return new CardViewHolder(card);
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-
-        }
-
-        public class CardViewHolder : RecyclerView.ViewHolder
-        {
-            LinearLayout layout;
-            public CardViewHolder(View itemView) : base(itemView)
-            {
-                layout = itemView;
-            }
+            var cardHolder = (CardViewHolder) holder;
+            cardHolder.itemCard.AddTitle(cardDataList[position].title);
+            cardHolder.itemCard.AddDescription(cardDataList[position].description);
+            cardHolder.itemCard.AddAtom(cardDataList[position].imageId);
         }
     }
+
+    public class CardViewHolder : RecyclerView.ViewHolder
+    {
+        public ItemCard itemCard;
+        public CardViewHolder(View itemView) : base(itemView) => itemCard = (ItemCard)itemView;
+    }
 }
-*/

@@ -38,19 +38,25 @@ namespace AndroidApp
             buttonCard.AddText("Subheader");
             buttonCard.SetPadding(DpToPx(20), DpToPx(10), DpToPx(20), DpToPx(10));
 
-            var itemCard = new ItemCard(this, Resource.Drawable.atom);
+            var itemCard = new ItemCard(this, "Title", "Description", Resource.Drawable.atom);
             itemCard.AddCross(Resource.Drawable.cross);
             itemCard.SetPadding(DpToPx(20), DpToPx(10), DpToPx(20), DpToPx(10));
 
-            var tempItem = new ItemCard(this, Resource.Drawable.atom);
+            var cardDataList = new List<CardData>();
+            cardDataList.Add(new CardData("0", "0d", Resource.Drawable.atom));
+            cardDataList.Add(new CardData("1", "1d", Resource.Drawable.atom));
+            cardDataList.Add(new CardData("2", "2d", Resource.Drawable.atom));
+            cardDataList.Add(new CardData("3", "3d", Resource.Drawable.atom));
+            cardDataList.Add(new CardData("4", "4d", Resource.Drawable.atom));
+            cardDataList.Add(new CardData("5", "5d", Resource.Drawable.atom));
+            cardDataList.Add(new CardData("6", "6d", Resource.Drawable.atom));
+            cardDataList.Add(new CardData("7", "7d", Resource.Drawable.atom));
+            cardDataList.Add(new CardData("8", "8d", Resource.Drawable.atom));
+            cardDataList.Add(new CardData("9", "9d", Resource.Drawable.atom));
 
-            var listCard = new ListCard(this, Resource.Drawable.atom, tempItem);
+            var listCard = new ListCard(this, Resource.Drawable.atom, cardDataList);
             listCard.AddTitle("Header");
             listCard.SetPadding(DpToPx(20), DpToPx(10), DpToPx(20), DpToPx(10));
-
-            var buttonListCard = new ButtonListCard(this, Resource.Drawable.atom, tempItem);
-            buttonListCard.AddTitle("Header");
-            buttonListCard.SetPadding(DpToPx(20), DpToPx(10), DpToPx(20), DpToPx(10));
 
             var button = new CustomButton(this);
             button.SetPadding(DpToPx(20), DpToPx(10), DpToPx(20), DpToPx(10));
@@ -60,7 +66,6 @@ namespace AndroidApp
             layout.AddView(buttonCard);
             layout.AddView(itemCard);
             layout.AddView(listCard);
-            layout.AddView(buttonListCard);
             layout.AddView(button);
 
             SetContentView(layout);

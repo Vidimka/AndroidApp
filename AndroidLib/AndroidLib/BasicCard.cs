@@ -12,11 +12,7 @@ namespace AndroidLib
     {
         protected TextView titleField;
         protected ImageView image;
-
-        protected static int radiusValue = DpToPx(24);
-        protected static float[] outerRadii = {radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue, radiusValue};
-        protected static RoundRectShape roundRect = new RoundRectShape(outerRadii, null, null);
-        protected static ShapeDrawable backgroundShape = new ShapeDrawable(roundRect);
+        protected ShapeDrawable backgroundShape = GetRoundRect(24);
         public BasicCard(Context? context, int imageId) : base(context)
         {
             Initialize(imageId);
