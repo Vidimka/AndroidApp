@@ -16,7 +16,7 @@ namespace AndroidLib
             Text = "Button";
             SetTextColor(Color.ParseColor("#428BF9"));
             SetTextSize(ComplexUnitType.Dip, 14);
-
+            SetBackgroundColor(Color.Transparent);
         }
     }
 }

@@ -4,7 +4,6 @@ using Android.Graphics.Drawables;
 using Android.Graphics.Drawables.Shapes;
 using Android.Util;
 using Android.Views;
-using System.Runtime.CompilerServices;
 using static AndroidLib.Util;
 
 namespace AndroidLib
@@ -16,45 +15,23 @@ namespace AndroidLib
         static RoundRectShape roundRect = new RoundRectShape(outerRadii, null, null);
         static ShapeDrawable backgroundShape = new ShapeDrawable(roundRect);
 
-        ImageView cross;
-        public ItemCard(Context? context, int atomId, int crossId, bool enableCross = false) : base(context)
+        ImageButton cross;
+        public ItemCard(Context? context, int atomId) : base(context)
         {
-            Initialize(atomId, crossId, enableCross);
+            Initialize(atomId);
         }
 
-        void Initialize(int atomId, int crossId, bool enableCross)
+        void Initialize(int atomId)
         {
-            cross = new ImageView(Context);
-            cross.SetImageResource(crossId);
-
             Elevation = DpToPx(50);
             backgroundShape.SetTint(Color.White);
             Background = backgroundShape;
             var lp = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
             lp.BottomMargin = DpToPx(20);
             LayoutParameters = lp;
-
-            if (enableCross)
-            {
-                var crossLp = new LayoutParams(DpToPx(24), DpToPx(24));
-                crossLp.AddRule(LayoutRules.AlignParentRight);
-                cross.LayoutParameters = crossLp;
-                AddView(cross);
-            }
             int amount = 2;
             RelativeLayout item = CreateItem(atomId, "Title", "Description");
             AddView(item);
-            /* Transfer to other classes
-            for (int i=1; i<amount; i++)
-            {
-                int prevItemId = item.Id;
-                item = CreateItem(atomId, "Title", "Description");
-                var itemLp = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent);
-                itemLp.AddRule(LayoutRules.Below, prevItemId);
-                item.LayoutParameters = itemLp;
-                AddView(item);
-            }
-            */
         }
 
         public RelativeLayout CreateItem(int atomId, string title, string description)
@@ -94,6 +71,21 @@ namespace AndroidLib
             item.AddView(itemTitle);
             item.AddView(textField);
             return item;
+        }
+
+        public void AddCross(int imageId) 
+        {
+            cross = new ImageButton(Context);
+            cross.SetImageResource(imageId);
+            cross.Click += (sender, e) =>
+            {
+                ((ViewGroup)Parent).RemoveView(this);
+            };
+
+            var crossLp = new LayoutParams(DpToPx(24), DpToPx(24));
+            crossLp.AddRule(LayoutRules.AlignParentRight);
+            cross.LayoutParameters = crossLp;
+            AddView(cross);
         }
     }
 }
