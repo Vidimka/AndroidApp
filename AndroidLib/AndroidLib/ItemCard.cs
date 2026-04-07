@@ -12,10 +12,10 @@ namespace AndroidLib
     public class ItemCard : RelativeLayout
     {
         protected ShapeDrawable backgroundShape = GetRoundRect(24);
-        static RelativeLayout item;
-        static TextView itemTitle;
-        static TextView textField;
-        static ImageView atom;
+        RelativeLayout item;
+        TextView itemTitle;
+        TextView textField;
+        ImageView atom;
 
         ImageButton cross;
 
@@ -49,6 +49,8 @@ namespace AndroidLib
             itemTitle = new TextView(Context);
             itemTitle.Id = View.GenerateViewId();
             textField = new TextView(Context);
+
+            item = new RelativeLayout(Context);
             AddView(item);
         }
 
