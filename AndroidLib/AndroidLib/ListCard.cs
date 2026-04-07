@@ -35,9 +35,10 @@ namespace AndroidLib
 
             var recyclerView = new RecyclerView(Context);
             recyclerView.SetLayoutManager(new LinearLayoutManager(Context));
-            recyclerView.SetAdapter(new CardAdapter(cardDataList));
+            var cardAdapter = new CardAdapter(cardDataList);
+            recyclerView.SetAdapter(cardAdapter);
 
-            var recyclerLp = new LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
+            var recyclerLp = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
             recyclerLp.AddRule(LayoutRules.Below, titleField.Id);
             recyclerView.LayoutParameters = recyclerLp;
 

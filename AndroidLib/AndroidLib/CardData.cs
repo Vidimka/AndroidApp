@@ -1,6 +1,4 @@
-﻿using Android.Icu.Lang;
-
-namespace AndroidLib
+﻿namespace AndroidLib
 {
     public class CardData
     {

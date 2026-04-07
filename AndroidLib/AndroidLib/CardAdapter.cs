@@ -19,9 +19,9 @@ namespace AndroidLib
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             var cardHolder = (CardViewHolder) holder;
+            cardHolder.itemCard.AddAtom(cardDataList[position].imageId);
             cardHolder.itemCard.AddTitle(cardDataList[position].title);
             cardHolder.itemCard.AddDescription(cardDataList[position].description);
-            cardHolder.itemCard.AddAtom(cardDataList[position].imageId);
         }
     }
 
